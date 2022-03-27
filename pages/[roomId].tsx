@@ -1,8 +1,8 @@
 // -- next -- //
 import type { NextPage } from "next";
 
-const Home: NextPage = () => {
+const ChatRoomPage: NextPage = () => {
   return <></>;
 };
 
-export default Home;
+export default ChatRoomPage;
