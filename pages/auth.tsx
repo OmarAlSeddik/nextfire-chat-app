@@ -1,7 +1,7 @@
 // -- mui -- //
 import { Box } from "@mui/system";
 // -- local components -- //
-import Home from "../components/Home";
+import Auth from "../components/Auth";
 import Loading from "../components/Loading";
 // -- next -- //
 import type { NextPage } from "next";
@@ -13,27 +13,24 @@ import { useEffect } from "react";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const HomePage: NextPage = () => {
+const AuthPage: NextPage = () => {
   const router = useRouter();
   const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
-    if (!user && !loading) router.replace("/auth");
+    if (user) router.replace("/");
   }, [loading, router, user]);
 
   if (loading) return <Loading />;
   return (
     <Box sx={{ overflowX: "hidden" }}>
       <Head>
-        <title>NextFire Chat App</title>
-        <meta
-          name="description"
-          content="The main page of the NextFire Chat app."
-        />
+        <title>Sign In</title>
+        <meta name="description" content="Sign into the NextFire Chat app." />
       </Head>
-      <Home />
+      <Auth />
     </Box>
   );
 };
 
-export default HomePage;
+export default AuthPage;
