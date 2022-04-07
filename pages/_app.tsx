@@ -1,5 +1,6 @@
 // -- next -- //
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { useRouter } from "next/dist/client/router";
 // -- providers -- //
 import { ThemeContextProvider } from "../context/ThemeContext";
@@ -9,8 +10,12 @@ import { AnimatePresence } from "framer-motion";
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const url = router.route;
+
   return (
     <ThemeContextProvider>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <AnimatePresence exitBeforeEnter>
         <Component {...pageProps} key={url} />
       </AnimatePresence>
