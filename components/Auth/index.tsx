@@ -1,32 +1,34 @@
 // -- mui -- //
 import { Stack, Button } from "@mui/material";
 // -- firebase -- //
-import { auth, db } from "../../firebase";
+import { auth, db } from "@/firebase";
 import {
   signInWithPopup,
   signInWithRedirect,
   GoogleAuthProvider,
   getRedirectResult,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 // -- basic/custom hooks //
 import { useContext } from "react";
 // -- context -- //
-import ThemeContext from "../../context/ThemeContext";
-import { string } from "yup";
+import ThemeContext from "@/context/ThemeContext";
 
 const Auth = () => {
   const context = useContext(ThemeContext);
   const isMobile = context.isMobile;
 
-  const createNewUser = (
+  const createNewUser = async (
     uid: string,
     email: string,
     displayName: string,
     photoUrl: string
   ) => {
     const userRef = doc(db, "users", uid);
-    setDoc(userRef, { uid, email, displayName, photoUrl }, { merge: true });
+    const docSnap = await getDoc(userRef);
+    if (!docSnap.exists()) {
+      setDoc(userRef, { uid, email, displayName, photoUrl });
+    }
   };
 
   const signInWithGoogle = () => {
@@ -34,52 +36,21 @@ const Auth = () => {
 
     if (isMobile) {
       signInWithRedirect(auth, provider);
-      getRedirectResult(auth)
-        .then((result) => {
-          const credential =
-            result && GoogleAuthProvider.credentialFromResult(result);
-          const token = credential?.accessToken;
-          const user = result?.user;
-          user?.email &&
-            user?.displayName &&
-            user?.photoURL &&
-            createNewUser(
-              user.uid,
-              user.email,
-              user.displayName,
-              user.photoURL
-            );
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          const email = error.email;
-          const credential = GoogleAuthProvider.credentialFromError(error);
-        });
+      getRedirectResult(auth).then((result) => {
+        const user = result?.user;
+        if (user && user.email && user.displayName && user.photoURL) {
+          createNewUser(user.uid, user.email, user.displayName, user.photoURL);
+        }
+      });
     }
 
     if (!isMobile) {
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential?.accessToken;
-          const user = result.user;
-          user?.email &&
-            user?.displayName &&
-            user?.photoURL &&
-            createNewUser(
-              user.uid,
-              user.email,
-              user.displayName,
-              user.photoURL
-            );
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          const email = error.email;
-          const credential = GoogleAuthProvider.credentialFromError(error);
-        });
+      signInWithPopup(auth, provider).then((result) => {
+        const user = result.user;
+        if (user && user.email && user.displayName && user.photoURL) {
+          createNewUser(user.uid, user.email, user.displayName, user.photoURL);
+        }
+      });
     }
   };
 

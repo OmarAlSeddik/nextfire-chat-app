@@ -1,8 +1,8 @@
 // -- mui -- //
 import { Box } from "@mui/system";
 // -- local components -- //
-import Auth from "../components/Auth";
-import Loading from "../components/Loading";
+import Auth from "@/components/Auth";
+import Loading from "@/components/Loading";
 // -- next -- //
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -10,7 +10,7 @@ import { useRouter } from "next/dist/client/router";
 // -- basic & custom hooks -- //
 import { useEffect } from "react";
 // -- firebase -- //
-import { auth } from "../firebase";
+import { auth } from "@/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const AuthPage: NextPage = () => {

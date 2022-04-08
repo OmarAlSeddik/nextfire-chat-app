@@ -1,7 +1,7 @@
 // -- mui -- //
 import { Stack, Button } from "@mui/material";
 // -- firebase -- //
-import { auth } from "../../firebase";
+import { auth } from "@/firebase";
 
 const Home = () => {
   const signOut = () => {
