@@ -1,7 +1,7 @@
 // -- firebase -- //
-import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "@/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const useUser = async (uid: string = "") => {
   const [authUser, loading] = useAuthState(auth);
