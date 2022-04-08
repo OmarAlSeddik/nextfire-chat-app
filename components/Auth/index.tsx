@@ -36,12 +36,6 @@ const Auth = () => {
 
     if (isMobile) {
       signInWithRedirect(auth, provider);
-      getRedirectResult(auth).then((result) => {
-        const user = result?.user;
-        if (user && user.email && user.displayName && user.photoURL) {
-          createNewUser(user.uid, user.email, user.displayName, user.photoURL);
-        }
-      });
     }
 
     if (!isMobile) {
