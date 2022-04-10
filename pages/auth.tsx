@@ -1,5 +1,5 @@
-// -- mui -- //
-import { Box } from "@mui/system";
+// -- mantine -- //
+import { Box } from "@mantine/core";
 // -- local components -- //
 import Auth from "@/components/Auth";
 import Loading from "@/components/Loading";

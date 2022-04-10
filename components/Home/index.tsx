@@ -1,5 +1,5 @@
-// -- mui -- //
-import { Stack, Button } from "@mui/material";
+// -- mantine -- //
+import { Button, Stack } from "@mantine/core";
 // -- library -- //
 import signOut from "library/signOut";
 import authRedirectResult from "library/authRedirectResult";
@@ -9,12 +9,12 @@ const Home = () => {
 
   return (
     <Stack
-      alignItems="center"
-      justifyContent="center"
+      align="center"
+      justify="center"
       sx={{ minHeight: "100vh" }}
       onClick={() => signOut()}
     >
-      <Button variant="contained" sx={{ textTransform: "none" }}>
+      <Button variant="gradient" gradient={{ from: "orange", to: "red" }}>
         Sign Out
       </Button>
     </Stack>

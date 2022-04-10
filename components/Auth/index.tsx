@@ -1,24 +1,22 @@
-// -- mui -- //
-import { Stack, Button } from "@mui/material";
-// -- basic/custom hooks //
-import { useContext } from "react";
-// -- context -- //
-import ThemeContext from "@/context/ThemeContext";
+// -- mantine -- //
+import { Button, Stack, Text } from "@mantine/core";
+// -- basic & custom hooks -- //
+import useIsMobile from "@/hooks/useIsMobile";
 // -- library -- //
 import signInWithGoogle from "library/signInWithGoogle";
 
 const Auth = () => {
-  const context = useContext(ThemeContext);
-  const isMobile = context.isMobile;
+  const isMobile = useIsMobile();
 
   return (
     <Stack
-      alignItems="center"
-      justifyContent="center"
+      align="center"
+      justify="center"
       sx={{ minHeight: "100vh" }}
       onClick={() => signInWithGoogle(isMobile)}
     >
-      <Button variant="contained" sx={{ textTransform: "none" }}>
+      <Text size="xl">NextFire Chat App</Text>
+      <Button variant="gradient" gradient={{ from: "orange", to: "red" }}>
         Sign In With Google
       </Button>
     </Stack>
