@@ -23,7 +23,7 @@ const HomePage: NextPage = () => {
 
   if (loading) return <Loading />;
   return (
-    <Box sx={{ overflowX: "hidden" }}>
+    <Box sx={{ overflow: "hidden" }}>
       <Head>
         <title>NextFire Chat App</title>
         <meta

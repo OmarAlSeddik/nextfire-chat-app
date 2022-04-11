@@ -1,5 +1,5 @@
 // -- mantine -- //
-import { Button, Stack, Text } from "@mantine/core";
+import { Button, Stack, Text, Title } from "@mantine/core";
 // -- basic & custom hooks -- //
 import useIsMobile from "@/hooks/useIsMobile";
 // -- library -- //
@@ -15,7 +15,14 @@ const Auth = () => {
       sx={{ minHeight: "100vh" }}
       onClick={() => signInWithGoogle(isMobile)}
     >
-      <Text size="xl">NextFire Chat App</Text>
+      <Text
+        component="h1"
+        variant="gradient"
+        gradient={{ from: "orange", to: "red", deg: 180 }}
+        size="xl"
+      >
+        NextFire Chat App
+      </Text>
       <Button variant="gradient" gradient={{ from: "orange", to: "red" }}>
         Sign In With Google
       </Button>

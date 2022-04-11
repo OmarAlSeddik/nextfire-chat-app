@@ -8,12 +8,7 @@ const Home = () => {
   authRedirectResult();
 
   return (
-    <Stack
-      align="center"
-      justify="center"
-      sx={{ minHeight: "100vh" }}
-      onClick={() => signOut()}
-    >
+    <Stack align="center" justify="center" onClick={() => signOut()}>
       <Button variant="gradient" gradient={{ from: "orange", to: "red" }}>
         Sign Out
       </Button>

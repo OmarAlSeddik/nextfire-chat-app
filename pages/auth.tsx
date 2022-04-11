@@ -23,7 +23,7 @@ const AuthPage: NextPage = () => {
 
   if (loading) return <Loading />;
   return (
-    <Box sx={{ overflowX: "hidden" }}>
+    <Box sx={{ overflow: "hidden" }}>
       <Head>
         <title>Sign In</title>
         <meta name="description" content="Sign into the NextFire Chat app." />
