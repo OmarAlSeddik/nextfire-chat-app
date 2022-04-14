@@ -1,7 +1,10 @@
-import { Container } from "@mantine/core";
+// -- mantine -- //
+import { Box } from "@mantine/core";
 
 const Body = (props: any) => {
-  return <Container sx={{ flexGrow: "1" }}>{props.loadedPage}</Container>;
+  return (
+    <Box sx={{ flexGrow: "1", position: "relative" }}>{props.loadedPage}</Box>
+  );
 };
 
 export default Body;

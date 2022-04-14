@@ -1,7 +1,10 @@
-import { Grid } from "@mantine/core";
-import Main from "./Main";
+// -- mantine -- //
+import { Group } from "@mantine/core";
+// -- local components -- //
 import Navbar from "./Navbar";
+import Main from "./Main";
 import Sidebar from "./Sidebar";
+// -- next -- //
 import { useRouter } from "next/dist/client/router";
 
 const AppShell = (props: any) => {
@@ -11,17 +14,11 @@ const AppShell = (props: any) => {
   if (url === "/auth") return <>{props.children}</>;
 
   return (
-    <Grid gutter={0}>
-      <Grid.Col span={2}>
-        <Navbar />
-      </Grid.Col>
-      <Grid.Col span={8}>
-        <Main loadedPage={props.children} />
-      </Grid.Col>
-      <Grid.Col span={2}>
-        <Sidebar />
-      </Grid.Col>
-    </Grid>
+    <Group spacing={0}>
+      <Navbar />
+      <Main loadedPage={props.children} />
+      <Sidebar />
+    </Group>
   );
 };
 

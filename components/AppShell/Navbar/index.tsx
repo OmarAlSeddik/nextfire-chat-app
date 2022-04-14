@@ -1,16 +1,28 @@
-import { Container, Stack } from "@mantine/core";
+// -- mantine -- //
+import { Stack } from "@mantine/core";
+// -- local components -- //
+import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
-import Header from "./Header";
+// -- basic & custom hooks -- //
+import { useState } from "react";
 
-const Navbar = () => {
+const Section1 = () => {
+  const [activeTab, setActiveTab] = useState("room");
+
   return (
-    <Stack sx={{ height: "100vh" }}>
-      <Header />
+    <Stack
+      sx={(theme) => ({
+        height: "100vh",
+        width: "15rem",
+        backgroundColor: theme.colors.dark[6],
+      })}
+    >
+      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       <Body />
       <Footer />
     </Stack>
   );
 };
 
-export default Navbar;
+export default Section1;
