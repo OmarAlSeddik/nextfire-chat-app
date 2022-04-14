@@ -1,19 +1,24 @@
+// -- axios & swr -- //
+import axios from "axios";
+import useSWR from "swr";
 // -- firebase -- //
-import { auth, db } from "@/firebase";
-import { doc, getDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase";
 
-const useUser = async (uid: string = "") => {
+const useUser = (uid: string = "") => {
   const [authUser, loading] = useAuthState(auth);
-  let authUserData = {};
-  if (authUser) {
-    const userRef = doc(db, "users", uid || authUser.uid);
-    const userSnap = await getDoc(userRef);
-    if (userSnap.exists()) {
-      authUserData = userSnap.data();
-    }
-  }
-  return [authUserData, loading];
+  const userDoc = uid ? uid : authUser?.uid;
+
+  const url = `https://firestore.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}/databases/(default)/documents/users/${userDoc}`;
+  const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+
+  const { data, error } = useSWR(url, fetcher);
+
+  const user = data?.fields;
+  const loadingUser = (!data && !error) || loading;
+  const loadingUserError = error;
+
+  return [user, loadingUser, loadingUserError];
 };
 
 export default useUser;

@@ -6,6 +6,7 @@ import Main from "./Main";
 import Sidebar from "./Sidebar";
 // -- next -- //
 import { useRouter } from "next/dist/client/router";
+import useUser from "@/hooks/useUser";
 
 const AppShell = (props: any) => {
   const router = useRouter();
