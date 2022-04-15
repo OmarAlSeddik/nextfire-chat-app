@@ -11,7 +11,7 @@ const Section2 = (props: any) => {
       sx={(theme) => ({
         height: "100vh",
         flexGrow: "1",
-        backgroundColor: theme.colors.dark[5],
+        backgroundColor: theme.colors.dark[4],
       })}
     >
       <Header />

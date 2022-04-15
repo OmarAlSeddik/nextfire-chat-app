@@ -9,10 +9,10 @@ const useUser = (uid: string = "") => {
   const [authUser, loading] = useAuthState(auth);
   const userDoc = uid ? uid : authUser?.uid;
 
-  const url = `https://firestore.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}/databases/(default)/documents/users/${userDoc}`;
+  const url = `${process.env.NEXT_PUBLIC_USERS_URL}/${userDoc}`;
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
-  const { data, error } = useSWR(url, fetcher);
+  const { data, error } = useSWR(url, fetcher, { refreshInterval: 5000 });
 
   const user = data?.fields;
   const loadingUser = (!data && !error) || loading;

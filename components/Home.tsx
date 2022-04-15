@@ -1,7 +1,6 @@
 // -- mantine -- //
-import { Button, Stack, Text } from "@mantine/core";
+import { Stack, Text } from "@mantine/core";
 // -- library -- //
-import signOut from "library/signOut";
 import authRedirectResult from "library/authRedirectResult";
 
 const Home = () => {
@@ -18,12 +17,8 @@ const Home = () => {
         bottom: "0",
         left: "0",
       }}
-      onClick={() => signOut()}
     >
       <Text size="xl">[Room / Home Page]</Text>
-      <Button variant="gradient" gradient={{ from: "orange", to: "red" }}>
-        Sign Out
-      </Button>
     </Stack>
   );
 };
