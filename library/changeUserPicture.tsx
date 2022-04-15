@@ -6,7 +6,7 @@ const changeUserPicture = async (uid: string, photoUrl: string) => {
   const userRef = doc(db, "users", uid);
   const docSnap = await getDoc(userRef);
   if (docSnap.exists()) {
-    setDoc(userRef, { photoUrl: `${photoUrl}.png` }, { merge: true });
+    setDoc(userRef, { photoUrl }, { merge: true });
   }
 };
 

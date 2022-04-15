@@ -1,6 +1,6 @@
 // -- mantine -- //
 import { Button, Stack, Text, Title } from "@mantine/core";
-// -- basic & custom hooks -- //
+// -- general hooks -- //
 import useIsMobile from "@/hooks/useIsMobile";
 // -- library -- //
 import signInWithGoogle from "library/signInWithGoogle";

@@ -12,7 +12,7 @@ const useUser = (uid: string = "") => {
   const url = `${process.env.NEXT_PUBLIC_USERS_URL}/${userDoc}`;
   const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
-  const { data, error } = useSWR(url, fetcher, { refreshInterval: 5000 });
+  const { data, error } = useSWR(url, fetcher, { refreshInterval: 1000 });
 
   const user = data?.fields;
   const loadingUser = (!data && !error) || loading;

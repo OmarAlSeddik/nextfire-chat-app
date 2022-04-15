@@ -4,7 +4,7 @@ import { Stack } from "@mantine/core";
 import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
-// -- basic & custom hooks -- //
+// -- general hooks -- //
 import { useState } from "react";
 
 const Section1 = () => {

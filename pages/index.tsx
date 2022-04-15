@@ -7,7 +7,7 @@ import Loading from "@/components/Loading";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/dist/client/router";
-// -- basic & custom hooks -- //
+// -- general hooks -- //
 import { useEffect } from "react";
 // -- firebase -- //
 import { auth } from "@/firebase";

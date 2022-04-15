@@ -1,5 +1,6 @@
 // -- mantine -- //
 import { MantineProvider } from "@mantine/core";
+import { NotificationsProvider } from "@mantine/notifications";
 // -- next -- //
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -16,14 +17,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <MantineProvider theme={appTheme} withNormalizeCSS withGlobalStyles>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <AnimatePresence exitBeforeEnter>
-        <AppShell>
-          <Component {...pageProps} key={url} />
-        </AppShell>
-      </AnimatePresence>
+      <NotificationsProvider position="bottom-center">
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
+        <AnimatePresence exitBeforeEnter>
+          <AppShell>
+            <Component {...pageProps} key={url} />
+          </AppShell>
+        </AnimatePresence>
+      </NotificationsProvider>
     </MantineProvider>
   );
 }
