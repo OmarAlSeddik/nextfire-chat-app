@@ -24,7 +24,9 @@ import changeUserName from "library/changeUserName";
 
 const ProfileModal = (props: {
   openedModal: boolean;
-  setOpenedModal: any;
+  setOpenedModal: (value: boolean) => void;
+  optimisticPhoto: string | null;
+  setOptimisticPhoto: (value: any) => void;
   uid: string;
   displayName: string;
   photoUrl: string;
@@ -38,22 +40,28 @@ const ProfileModal = (props: {
   const displayName = props.displayName;
   const photoUrl = props.photoUrl;
 
+  const [optimisticPhoto, setOptimisticPhoto] = [
+    props.optimisticPhoto,
+    props.setOptimisticPhoto,
+  ];
+
   const [copiedToClipboard, setCopiedToClipboard] = useState(false);
   const [editingDisplayName, setEditingDisplayName] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleImageSubmit = (image: any) => {
+  const handleImageSubmit = (image: Blob | Uint8Array | ArrayBuffer) => {
     const imageRef = ref(storage, uid);
     uploadBytes(imageRef, image).then(() =>
       getDownloadURL(imageRef).then((url) => {
         changeUserPicture(uid, url);
+        setOptimisticPhoto(url);
       })
     );
   };
 
   const dropzoneChildren = () => {
-    return <Avatar size="xl" radius="md" src={photoUrl} />;
+    return <Avatar size="xl" radius="md" src={optimisticPhoto ?? photoUrl} />;
   };
 
   return (

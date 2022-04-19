@@ -15,6 +15,7 @@ const Footer = () => {
   const photoUrl = user?.photoUrl.stringValue;
 
   const [openedModal, setOpenedModal] = useState(false);
+  const [optimisticPhoto, setOptimisticPhoto] = useState(null);
 
   return (
     <>
@@ -24,6 +25,8 @@ const Footer = () => {
         uid={uid}
         displayName={displayName}
         photoUrl={photoUrl}
+        optimisticPhoto={optimisticPhoto}
+        setOptimisticPhoto={setOptimisticPhoto}
       />
       <Group
         spacing="xs"
@@ -36,7 +39,10 @@ const Footer = () => {
         })}
         onClick={() => setOpenedModal(true)}
       >
-        <DisplayAvatar loading={loading} photoUrl={photoUrl} />
+        <DisplayAvatar
+          loading={loading}
+          photoUrl={optimisticPhoto ?? photoUrl}
+        />
         <DisplayUser loading={loading} displayName={displayName} />
       </Group>
     </>

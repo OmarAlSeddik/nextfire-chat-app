@@ -1,7 +1,10 @@
 // -- mantine -- //
 import { SegmentedControl, Stack } from "@mantine/core";
 
-const Header = (props: any) => {
+const Header = (props: {
+  activeTab: string;
+  setActiveTab: (value: string) => void;
+}) => {
   return (
     <Stack
       justify="center"
