@@ -3,7 +3,7 @@ import { Loader, Stack, Text } from "@mantine/core";
 
 const Loading = () => {
   return (
-    <Stack align="center" justify="center">
+    <Stack align="center" justify="center" sx={{ height: "100%" }}>
       <Text
         component="h1"
         variant="gradient"

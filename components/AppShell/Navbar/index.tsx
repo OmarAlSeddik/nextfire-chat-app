@@ -7,7 +7,7 @@ import Footer from "./Footer";
 // -- general hooks -- //
 import { useState } from "react";
 
-const Section1 = () => {
+const Navbar = () => {
   const [activeTab, setActiveTab] = useState("room");
 
   return (
@@ -25,4 +25,4 @@ const Section1 = () => {
   );
 };
 
-export default Section1;
+export default Navbar;

@@ -4,8 +4,12 @@ import { Stack } from "@mantine/core";
 import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
+import { useRouter } from "next/router";
 
-const Section2 = (props: any) => {
+const Main = (props: any) => {
+  const router = useRouter();
+  const url = router.route;
+
   return (
     <Stack
       sx={(theme) => ({
@@ -14,11 +18,11 @@ const Section2 = (props: any) => {
         backgroundColor: theme.colors.dark[4],
       })}
     >
-      <Header />
+      {url === "/" ? null : <Header />}
       <Body loadedPage={props.loadedPage} />
-      <Footer />
+      {url === "/" ? null : <Footer />}
     </Stack>
   );
 };
 
-export default Section2;
+export default Main;

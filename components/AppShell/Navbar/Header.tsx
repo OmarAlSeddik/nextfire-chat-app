@@ -15,6 +15,7 @@ const Header = (props: {
       })}
     >
       <SegmentedControl
+        radius="xl"
         fullWidth
         value={props.activeTab}
         onChange={props.setActiveTab}

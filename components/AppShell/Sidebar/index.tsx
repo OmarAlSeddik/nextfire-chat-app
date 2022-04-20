@@ -5,7 +5,7 @@ import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
 
-const Section3 = () => {
+const Sidebar = () => {
   return (
     <Stack
       sx={(theme) => ({
@@ -21,4 +21,4 @@ const Section3 = () => {
   );
 };
 
-export default Section3;
+export default Sidebar;

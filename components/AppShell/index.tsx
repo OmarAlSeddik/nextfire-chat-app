@@ -17,7 +17,7 @@ const AppShell = (props: any) => {
     <Group spacing={0}>
       <Navbar />
       <Main loadedPage={props.children} />
-      <Sidebar />
+      {url === "/" ? null : <Sidebar />}
     </Group>
   );
 };

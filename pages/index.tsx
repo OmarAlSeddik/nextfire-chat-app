@@ -1,7 +1,7 @@
 // -- mantine -- //
 import { Box } from "@mantine/core";
 // -- local components -- //
-import Home from "@/components/Home";
+import Home from "@/components/AppShell/Home";
 import Loading from "@/components/Loading";
 // -- next -- //
 import type { NextPage } from "next";
@@ -23,7 +23,7 @@ const HomePage: NextPage = () => {
 
   if (loading) return <Loading />;
   return (
-    <Box sx={{ overflow: "hidden" }}>
+    <Box sx={{ overflow: "hidden", height: "100%" }}>
       <Head>
         <title>NextFire Chat App</title>
         <meta

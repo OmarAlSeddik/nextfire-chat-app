@@ -1,19 +1,24 @@
 // -- mantine -- //
-import { Stack, Text } from "@mantine/core";
+import { Group, Text } from "@mantine/core";
+import { Home } from "tabler-icons-react";
 
 const Footer = () => {
   return (
-    <Stack
-      align="center"
-      justify="center"
+    <Group
+      spacing="xs"
+      position="center"
       sx={(theme) => ({
         height: "4rem",
         padding: "0rem 1rem",
         boxShadow: theme.shadows.xs,
+        userSelect: "none",
+        cursor: "pointer",
+        "&:hover": { backgroundColor: theme.colors.dark[5] },
       })}
     >
-      <Text size="xl">[Link to Homepage]</Text>
-    </Stack>
+      <Home />
+      <Text weight="bold">Home Page</Text>
+    </Group>
   );
 };
 

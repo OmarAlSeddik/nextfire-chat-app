@@ -34,6 +34,7 @@ const Footer = () => {
           height: "4rem",
           padding: "0rem 1rem",
           boxShadow: theme.shadows.xs,
+          userSelect: "none",
           cursor: "pointer",
           "&:hover": { backgroundColor: theme.colors.dark[5] },
         })}
