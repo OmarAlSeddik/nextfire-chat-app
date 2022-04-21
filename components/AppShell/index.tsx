@@ -1,11 +1,8 @@
-// -- mantine -- //
 import { Group } from "@mantine/core";
-// -- local components -- //
-import Navbar from "./Navbar";
-import Main from "./Main";
-import Sidebar from "./Sidebar";
-// -- next -- //
 import { useRouter } from "next/dist/client/router";
+import Main from "./Main";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 
 const AppShell = (props: any) => {
   const router = useRouter();

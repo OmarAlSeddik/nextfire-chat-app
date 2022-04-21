@@ -1,4 +1,3 @@
-// -- mantine -- //
 import { Box } from "@mantine/core";
 
 const Body = (props: any) => {

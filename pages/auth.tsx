@@ -1,16 +1,11 @@
-// -- mantine -- //
-import { Box } from "@mantine/core";
-// -- local components -- //
 import Auth from "@/components/Auth";
 import Loading from "@/components/Loading";
-// -- next -- //
-import type { NextPage } from "next";
-import Head from "next/head";
-import { useRouter } from "next/dist/client/router";
-// -- general hooks -- //
-import { useEffect } from "react";
-// -- firebase -- //
 import { auth } from "@/firebase";
+import { Box } from "@mantine/core";
+import type { NextPage } from "next";
+import { useRouter } from "next/dist/client/router";
+import Head from "next/head";
+import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const AuthPage: NextPage = () => {

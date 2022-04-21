@@ -1,4 +1,3 @@
-// -- mantine -- //
 import { Container, Text } from "@mantine/core";
 
 const Body = () => {

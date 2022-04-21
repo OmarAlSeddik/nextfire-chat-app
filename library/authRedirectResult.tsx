@@ -1,7 +1,5 @@
-// -- firebase -- //
 import { auth } from "@/firebase";
 import { getRedirectResult } from "firebase/auth";
-// -- library -- //
 import createNewUser from "library/createNewUser";
 
 const authRedirectResult = () => {

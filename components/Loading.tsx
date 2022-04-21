@@ -1,4 +1,3 @@
-// -- mantine -- //
 import { Loader, Stack, Text } from "@mantine/core";
 
 const Loading = () => {

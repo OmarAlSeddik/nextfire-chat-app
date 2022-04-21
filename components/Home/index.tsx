@@ -1,6 +1,4 @@
-// -- mantine -- //
 import { Stack, Text } from "@mantine/core";
-// -- library -- //
 import authRedirectResult from "library/authRedirectResult";
 import Rooms from "./Rooms";
 import Theme from "./Theme";

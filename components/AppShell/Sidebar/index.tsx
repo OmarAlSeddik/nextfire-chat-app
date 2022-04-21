@@ -1,9 +1,7 @@
-// -- mantine -- //
 import { Stack } from "@mantine/core";
-// -- local components -- //
-import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
+import Header from "./Header";
 
 const Sidebar = () => {
   return (

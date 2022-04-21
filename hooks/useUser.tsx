@@ -1,8 +1,6 @@
-// -- axios & swr -- //
 import axios from "axios";
-import useSWR from "swr";
-// -- firebase -- //
 import { useAuthState } from "react-firebase-hooks/auth";
+import useSWR from "swr";
 import { auth } from "../firebase";
 
 const useUser = (uid: string = "") => {

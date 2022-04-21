@@ -1,6 +1,5 @@
-// -- firebase -- //
 import { db } from "@/firebase";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 const changeUserPicture = async (uid: string, photoUrl: string) => {
   const userRef = doc(db, "users", uid);

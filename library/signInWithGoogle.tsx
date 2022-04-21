@@ -1,11 +1,9 @@
-// -- firebase -- //
 import { auth } from "@/firebase";
 import {
+  GoogleAuthProvider,
   signInWithPopup,
   signInWithRedirect,
-  GoogleAuthProvider,
 } from "firebase/auth";
-// -- library -- //
 import createNewUser from "library/createNewUser";
 
 const signInWithGoogle = (isMobile: boolean) => {

@@ -1,4 +1,3 @@
-// -- mantine -- //
 import { SegmentedControl, Stack } from "@mantine/core";
 
 const Header = (props: {

@@ -1,11 +1,8 @@
-// -- mantine -- //
 import { Stack } from "@mantine/core";
-// -- local components -- //
-import Header from "./Header";
+import { useState } from "react";
 import Body from "./Body";
 import Footer from "./Footer";
-// -- general hooks -- //
-import { useState } from "react";
+import Header from "./Header";
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState("room");

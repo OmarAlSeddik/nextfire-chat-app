@@ -1,4 +1,3 @@
-// -- mantine -- //
 import { Group, Text } from "@mantine/core";
 import { Home } from "tabler-icons-react";
 

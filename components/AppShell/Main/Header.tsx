@@ -1,4 +1,3 @@
-// -- mantine -- //
 import { Stack, Text } from "@mantine/core";
 
 const Header = () => {

@@ -1,8 +1,5 @@
-// -- mantine -- //
-import { Button, Stack, Text, Title } from "@mantine/core";
-// -- general hooks -- //
 import useIsMobile from "@/hooks/useIsMobile";
-// -- library -- //
+import { Button, Stack, Text } from "@mantine/core";
 import signInWithGoogle from "library/signInWithGoogle";
 
 const Auth = () => {

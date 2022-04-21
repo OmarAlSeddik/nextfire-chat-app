@@ -1,10 +1,8 @@
-// -- mantine -- //
 import { Stack } from "@mantine/core";
-// -- local components -- //
-import Header from "./Header";
+import { useRouter } from "next/router";
 import Body from "./Body";
 import Footer from "./Footer";
-import { useRouter } from "next/router";
+import Header from "./Header";
 
 const Main = (props: any) => {
   const router = useRouter();

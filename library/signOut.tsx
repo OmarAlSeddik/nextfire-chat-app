@@ -1,4 +1,3 @@
-// -- firebase -- //
 import { auth } from "@/firebase";
 
 const signOut = () => {
