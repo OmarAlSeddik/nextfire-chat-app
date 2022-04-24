@@ -12,7 +12,12 @@ const Footer = () => {
         boxShadow: theme.shadows.xs,
         userSelect: "none",
         cursor: "pointer",
-        "&:hover": { backgroundColor: theme.colors.dark[5] },
+        "&:hover": {
+          backgroundColor:
+            theme.colorScheme === "dark"
+              ? theme.colors.dark[5]
+              : theme.colors.gray[5],
+        },
       })}
     >
       <Home />

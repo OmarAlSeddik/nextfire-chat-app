@@ -12,7 +12,10 @@ const Navbar = () => {
       sx={(theme) => ({
         height: "100vh",
         width: "15rem",
-        backgroundColor: theme.colors.dark[6],
+        backgroundColor:
+          theme.colorScheme === "dark"
+            ? theme.colors.dark[6]
+            : theme.colors.gray[6],
       })}
     >
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />

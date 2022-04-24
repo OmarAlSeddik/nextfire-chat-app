@@ -1,7 +1,6 @@
 import { MantineThemeOverride } from "@mantine/core";
 
 const appTheme: MantineThemeOverride = {
-  colorScheme: "dark",
   primaryColor: "orange",
   loader: "bars",
   shadows: {

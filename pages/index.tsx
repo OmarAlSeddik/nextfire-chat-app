@@ -1,4 +1,4 @@
-import Home from "@/components/AppShell/Home";
+import Home from "@/components/Home";
 import Loading from "@/components/Loading";
 import { auth } from "@/firebase";
 import { Box } from "@mantine/core";

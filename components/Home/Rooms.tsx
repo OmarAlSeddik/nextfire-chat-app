@@ -6,7 +6,10 @@ const Rooms = () => {
       shadow="md"
       sx={(theme) => ({
         width: "30rem",
-        backgroundColor: theme.colors.dark[5],
+        backgroundColor:
+          theme.colorScheme === "dark"
+            ? theme.colors.dark[5]
+            : theme.colors.gray[5],
       })}
     >
       <Stack align="center">
@@ -19,7 +22,12 @@ const Rooms = () => {
               label="Join a Public Room"
               placeholder="Enter Room ID"
               sx={(theme) => ({
-                input: { backgroundColor: theme.colors.dark[4] },
+                input: {
+                  backgroundColor:
+                    theme.colorScheme === "dark"
+                      ? theme.colors.dark[4]
+                      : theme.colors.gray[4],
+                },
               })}
             />
             <Button
@@ -38,7 +46,12 @@ const Rooms = () => {
               label="Directly Message a User"
               placeholder="Enter User ID"
               sx={(theme) => ({
-                input: { backgroundColor: theme.colors.dark[4] },
+                input: {
+                  backgroundColor:
+                    theme.colorScheme === "dark"
+                      ? theme.colors.dark[4]
+                      : theme.colors.gray[4],
+                },
               })}
             />
             <Button

@@ -13,7 +13,10 @@ const Main = (props: any) => {
       sx={(theme) => ({
         height: "100vh",
         flexGrow: "1",
-        backgroundColor: theme.colors.dark[4],
+        backgroundColor:
+          theme.colorScheme === "dark"
+            ? theme.colors.dark[4]
+            : theme.colors.gray[4],
       })}
     >
       {url === "/" ? null : <Header />}

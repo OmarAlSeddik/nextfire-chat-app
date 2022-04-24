@@ -1,12 +1,12 @@
 // -- mantine -- //
+import useUser from "@/hooks/useUser";
 import { Group } from "@mantine/core";
 // -- general hooks -- //
 import { useState } from "react";
-import useUser from "@/hooks/useUser";
-// -- library -- //
-import ProfileModal from "./ProfileModal";
 import DisplayAvatar from "./DisplayAvatar";
 import DisplayUser from "./DisplayUser";
+// -- library -- //
+import ProfileModal from "./ProfileModal";
 
 const Footer = () => {
   const [user, loading] = useUser();
@@ -36,7 +36,12 @@ const Footer = () => {
           boxShadow: theme.shadows.xs,
           userSelect: "none",
           cursor: "pointer",
-          "&:hover": { backgroundColor: theme.colors.dark[5] },
+          "&:hover": {
+            backgroundColor:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[5]
+                : theme.colors.gray[5],
+          },
         })}
         onClick={() => setOpenedModal(true)}
       >

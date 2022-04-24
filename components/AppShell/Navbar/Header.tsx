@@ -16,6 +16,7 @@ const Header = (props: {
       <SegmentedControl
         radius="xl"
         fullWidth
+        color={"orange"}
         value={props.activeTab}
         onChange={props.setActiveTab}
         data={[

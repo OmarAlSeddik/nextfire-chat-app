@@ -5,6 +5,7 @@ import {
   SegmentedControl,
   Slider,
   Text,
+  useMantineColorScheme,
   useMantineTheme,
 } from "@mantine/core";
 
@@ -18,12 +19,17 @@ const Theme = () => {
   ];
 
   const theme = useMantineTheme();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  console.log(colorScheme);
 
   return (
     <Card
       sx={(theme) => ({
         width: "30rem",
-        backgroundColor: theme.colors.dark[5],
+        backgroundColor:
+          theme.colorScheme === "dark"
+            ? theme.colors.dark[5]
+            : theme.colors.gray[5],
       })}
     >
       <Text
@@ -50,11 +56,14 @@ const Theme = () => {
       <SegmentedControl
         radius="xl"
         sx={{ width: "100%", marginBottom: "1rem" }}
+        color={"orange"}
         fullWidth
+        value={colorScheme}
         data={[
           { label: "Light Theme", value: "light" },
           { label: "Dark Theme", value: "dark" },
         ]}
+        onChange={() => toggleColorScheme()}
       />
       <Text align="center" weight={500} sx={{ marginBottom: "0.25rem" }}>
         Adjust the Theme Color
