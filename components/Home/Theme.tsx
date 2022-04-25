@@ -1,3 +1,4 @@
+import PrimaryColorContext from "@/context/primaryColorContext";
 import {
   Card,
   ColorSwatch,
@@ -8,6 +9,7 @@ import {
   useMantineColorScheme,
   useMantineTheme,
 } from "@mantine/core";
+import { useContext } from "react";
 
 const Theme = () => {
   const MARKS = [
@@ -20,7 +22,12 @@ const Theme = () => {
 
   const theme = useMantineTheme();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  console.log(colorScheme);
+
+  const context = useContext(PrimaryColorContext);
+  const [primaryColor, setPrimaryColor] = [
+    context.primaryColor,
+    context.setPrimaryColor,
+  ];
 
   return (
     <Card
@@ -48,6 +55,7 @@ const Theme = () => {
         step={25}
         marks={MARKS}
         styles={{ markLabel: { display: "none" } }}
+        color={primaryColor}
         sx={{ marginBottom: "1rem" }}
       />
       <Text align="center" weight={500} sx={{ marginBottom: "0.25rem" }}>
@@ -56,7 +64,7 @@ const Theme = () => {
       <SegmentedControl
         radius="xl"
         sx={{ width: "100%", marginBottom: "1rem" }}
-        color={"orange"}
+        color={primaryColor}
         fullWidth
         value={colorScheme}
         data={[
@@ -74,18 +82,21 @@ const Theme = () => {
           size={32}
           color={theme.colors.orange[6]}
           sx={{ cursor: "pointer" }}
+          onClick={() => setPrimaryColor("orange")}
         />
         <ColorSwatch
           component="button"
           size={32}
-          color={theme.colors.blue[6]}
+          color={theme.colors.cyan[6]}
           sx={{ cursor: "pointer" }}
+          onClick={() => setPrimaryColor("cyan")}
         />
         <ColorSwatch
           component="button"
           size={32}
           color={theme.colors.pink[6]}
           sx={{ cursor: "pointer" }}
+          onClick={() => setPrimaryColor("pink")}
         />
       </Group>
     </Card>

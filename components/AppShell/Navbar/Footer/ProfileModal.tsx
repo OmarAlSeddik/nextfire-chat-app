@@ -1,4 +1,7 @@
 // -- mantine -- //
+// -- firebase -- //
+import PrimaryColorContext from "@/context/primaryColorContext";
+import { storage } from "@/firebase";
 import {
   Avatar,
   Button,
@@ -10,17 +13,16 @@ import {
 } from "@mantine/core";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import { showNotification } from "@mantine/notifications";
-// -- icons -- //
-import { Check, X } from "tabler-icons-react";
-// -- firebase -- //
-import { storage } from "@/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-// -- general hooks -- //
-import { useRef, useState } from "react";
+import changeUserName from "library/changeUserName";
+import changeUserPicture from "library/changeUserPicture";
+import getSecondaryColor from "library/getSecondaryColor";
 // -- library -- //
 import signOut from "library/signOut";
-import changeUserPicture from "library/changeUserPicture";
-import changeUserName from "library/changeUserName";
+// -- general hooks -- //
+import { useContext, useRef, useState } from "react";
+// -- icons -- //
+import { Check, X } from "tabler-icons-react";
 
 const ProfileModal = (props: {
   openedModal: boolean;
@@ -31,6 +33,8 @@ const ProfileModal = (props: {
   displayName: string;
   photoUrl: string;
 }) => {
+  const primaryColor = useContext(PrimaryColorContext).primaryColor;
+
   const [openedModal, setOpenedModal] = [
     props.openedModal,
     props.setOpenedModal,
@@ -95,7 +99,7 @@ const ProfileModal = (props: {
                 title: "Image Rejected!",
                 message:
                   "The maximum file size for the profile picture is 2 MB.",
-                color: "red",
+                color: getSecondaryColor(primaryColor),
                 icon: <X />,
               })
             }
@@ -116,7 +120,10 @@ const ProfileModal = (props: {
             compact
             sx={{ width: "8rem" }}
             variant="gradient"
-            gradient={{ from: "orange", to: "red" }}
+            gradient={{
+              from: primaryColor,
+              to: getSecondaryColor(primaryColor),
+            }}
             onClick={() => {
               setEditingDisplayName(!editingDisplayName);
               if (editingDisplayName) {
@@ -139,8 +146,8 @@ const ProfileModal = (props: {
             sx={{ width: "8rem" }}
             variant="gradient"
             gradient={{
-              from: copiedToClipboard ? "green" : "orange",
-              to: copiedToClipboard ? "lime" : "red",
+              from: copiedToClipboard ? "green" : primaryColor,
+              to: copiedToClipboard ? "lime" : getSecondaryColor(primaryColor),
             }}
             onClick={() => {
               navigator.clipboard.writeText(uid);

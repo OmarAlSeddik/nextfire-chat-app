@@ -1,6 +1,11 @@
+import PrimaryColorContext from "@/context/primaryColorContext";
 import { Button, Card, Group, Stack, Text, TextInput } from "@mantine/core";
+import getSecondaryColor from "library/getSecondaryColor";
+import { useContext } from "react";
 
 const Rooms = () => {
+  const primaryColor = useContext(PrimaryColorContext).primaryColor;
+
   return (
     <Card
       shadow="md"
@@ -33,7 +38,10 @@ const Rooms = () => {
             <Button
               compact
               variant="gradient"
-              gradient={{ from: "orange", to: "red" }}
+              gradient={{
+                from: primaryColor,
+                to: getSecondaryColor(primaryColor),
+              }}
             >
               Confirm
             </Button>
@@ -57,13 +65,19 @@ const Rooms = () => {
             <Button
               compact
               variant="gradient"
-              gradient={{ from: "orange", to: "red" }}
+              gradient={{
+                from: primaryColor,
+                to: getSecondaryColor(primaryColor),
+              }}
             >
               Confirm
             </Button>
           </Stack>
         </Group>
-        <Button variant="gradient" gradient={{ from: "orange", to: "red" }}>
+        <Button
+          variant="gradient"
+          gradient={{ from: primaryColor, to: getSecondaryColor(primaryColor) }}
+        >
           Create a New Room
         </Button>
       </Stack>

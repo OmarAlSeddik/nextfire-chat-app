@@ -1,9 +1,13 @@
+import PrimaryColorContext from "@/context/primaryColorContext";
 import { SegmentedControl, Stack } from "@mantine/core";
+import { useContext } from "react";
 
 const Header = (props: {
   activeTab: string;
   setActiveTab: (value: string) => void;
 }) => {
+  const primaryColor = useContext(PrimaryColorContext).primaryColor;
+
   return (
     <Stack
       justify="center"
@@ -16,7 +20,7 @@ const Header = (props: {
       <SegmentedControl
         radius="xl"
         fullWidth
-        color={"orange"}
+        color={primaryColor}
         value={props.activeTab}
         onChange={props.setActiveTab}
         data={[

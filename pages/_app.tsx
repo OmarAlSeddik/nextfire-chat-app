@@ -1,4 +1,5 @@
 import AppShell from "@/components/AppShell";
+import { PrimaryColorContextProvider } from "@/context/primaryColorContext";
 import {
   ColorScheme,
   ColorSchemeProvider,
@@ -28,26 +29,28 @@ function MyApp({ Component, pageProps }: AppProps) {
   appTheme.colorScheme = colorScheme;
 
   return (
-    <ColorSchemeProvider
-      colorScheme={colorScheme}
-      toggleColorScheme={toggleColorScheme}
-    >
-      <MantineProvider withNormalizeCSS withGlobalStyles theme={appTheme}>
-        <NotificationsProvider position="bottom-center">
-          <Head>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1"
-            />
-          </Head>
-          <AnimatePresence exitBeforeEnter>
-            <AppShell>
-              <Component {...pageProps} key={url} />
-            </AppShell>
-          </AnimatePresence>
-        </NotificationsProvider>
-      </MantineProvider>
-    </ColorSchemeProvider>
+    <PrimaryColorContextProvider>
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
+      >
+        <MantineProvider withNormalizeCSS withGlobalStyles theme={appTheme}>
+          <NotificationsProvider position="bottom-center">
+            <Head>
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1"
+              />
+            </Head>
+            <AnimatePresence exitBeforeEnter>
+              <AppShell>
+                <Component {...pageProps} key={url} />
+              </AppShell>
+            </AnimatePresence>
+          </NotificationsProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
+    </PrimaryColorContextProvider>
   );
 }
 
