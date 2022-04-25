@@ -14,7 +14,7 @@ const Rooms = () => {
         backgroundColor:
           theme.colorScheme === "dark"
             ? theme.colors.dark[5]
-            : theme.colors.gray[5],
+            : theme.colors.gray[4],
       })}
     >
       <Stack align="center">
@@ -31,7 +31,7 @@ const Rooms = () => {
                   backgroundColor:
                     theme.colorScheme === "dark"
                       ? theme.colors.dark[4]
-                      : theme.colors.gray[4],
+                      : theme.colors.gray[3],
                 },
               })}
             />
@@ -58,7 +58,7 @@ const Rooms = () => {
                   backgroundColor:
                     theme.colorScheme === "dark"
                       ? theme.colors.dark[4]
-                      : theme.colors.gray[4],
+                      : theme.colors.gray[3],
                 },
               })}
             />

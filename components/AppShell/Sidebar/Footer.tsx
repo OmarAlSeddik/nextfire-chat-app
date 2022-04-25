@@ -16,7 +16,7 @@ const Footer = () => {
           backgroundColor:
             theme.colorScheme === "dark"
               ? theme.colors.dark[5]
-              : theme.colors.gray[5],
+              : theme.colors.gray[4],
         },
       })}
     >

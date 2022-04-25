@@ -10,12 +10,7 @@ const Auth = () => {
   const primaryColor = useContext(PrimaryColorContext).primaryColor;
 
   return (
-    <Stack
-      align="center"
-      justify="center"
-      sx={{ minHeight: "100vh" }}
-      onClick={() => signInWithGoogle(isMobile)}
-    >
+    <Stack align="center" justify="center" sx={{ minHeight: "100vh" }}>
       <Text
         component="h1"
         variant="gradient"
@@ -31,6 +26,7 @@ const Auth = () => {
       <Button
         variant="gradient"
         gradient={{ from: primaryColor, to: getSecondaryColor(primaryColor) }}
+        onClick={() => signInWithGoogle(isMobile)}
       >
         Sign In With Google
       </Button>
