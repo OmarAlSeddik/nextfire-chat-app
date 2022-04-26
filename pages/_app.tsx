@@ -1,5 +1,5 @@
 import AppShell from "@/components/AppShell";
-import { PrimaryColorContextProvider } from "@/context/primaryColorContext";
+import { CustomContextProvider } from "@/context/CustomContext";
 import {
   ColorScheme,
   ColorSchemeProvider,
@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   appTheme.colorScheme = colorScheme;
 
   return (
-    <PrimaryColorContextProvider>
+    <CustomContextProvider>
       <ColorSchemeProvider
         colorScheme={colorScheme}
         toggleColorScheme={toggleColorScheme}
@@ -50,7 +50,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </NotificationsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
-    </PrimaryColorContextProvider>
+    </CustomContextProvider>
   );
 }
 

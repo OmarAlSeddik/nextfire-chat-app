@@ -1,10 +1,11 @@
-import PrimaryColorContext from "@/context/primaryColorContext";
+import CustomContext from "@/context/CustomContext";
 import { Loader, Stack, Text } from "@mantine/core";
 import getSecondaryColor from "library/getSecondaryColor";
 import { useContext } from "react";
 
 const Loading = () => {
-  const primaryColor = useContext(PrimaryColorContext).primaryColor;
+  const context = useContext(CustomContext);
+  const primaryColor = context.primaryColor;
 
   return (
     <Stack align="center" justify="center" sx={{ height: "100%" }}>

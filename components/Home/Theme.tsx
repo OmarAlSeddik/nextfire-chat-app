@@ -1,4 +1,4 @@
-import PrimaryColorContext from "@/context/primaryColorContext";
+import CustomContext from "@/context/CustomContext";
 import {
   Card,
   ColorSwatch,
@@ -13,17 +13,17 @@ import { useContext } from "react";
 
 const Theme = () => {
   const MARKS = [
-    { value: 0, label: "50%" },
-    { value: 25, label: "75%" },
-    { value: 50, label: "100%" },
-    { value: 75, label: "125%" },
-    { value: 100, label: "150%" },
+    { value: 0, label: "XS" },
+    { value: 25, label: "S" },
+    { value: 50, label: "M" },
+    { value: 75, label: "L" },
+    { value: 100, label: "XL" },
   ];
 
   const theme = useMantineTheme();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
-  const context = useContext(PrimaryColorContext);
+  const context = useContext(CustomContext);
   const [primaryColor, setPrimaryColor] = [
     context.primaryColor,
     context.setPrimaryColor,
@@ -32,7 +32,7 @@ const Theme = () => {
   return (
     <Card
       sx={(theme) => ({
-        width: "30rem",
+        width: "27rem",
         backgroundColor:
           theme.colorScheme === "dark"
             ? theme.colors.dark[5]
@@ -50,7 +50,7 @@ const Theme = () => {
         Adjust the Font Size
       </Text>
       <Slider
-        label={(val) => MARKS.find((mark) => mark.value === val)?.label}
+        label={(value) => MARKS.find((mark) => mark.value === value)?.label}
         defaultValue={50}
         step={25}
         marks={MARKS}

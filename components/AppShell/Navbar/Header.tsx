@@ -1,4 +1,4 @@
-import PrimaryColorContext from "@/context/primaryColorContext";
+import CustomContext from "@/context/CustomContext";
 import { SegmentedControl, Stack } from "@mantine/core";
 import { useContext } from "react";
 
@@ -6,7 +6,8 @@ const Header = (props: {
   activeTab: string;
   setActiveTab: (value: string) => void;
 }) => {
-  const primaryColor = useContext(PrimaryColorContext).primaryColor;
+  const context = useContext(CustomContext);
+  const primaryColor = context.primaryColor;
 
   return (
     <Stack

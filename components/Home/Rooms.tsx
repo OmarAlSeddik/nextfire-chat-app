@@ -1,16 +1,18 @@
-import PrimaryColorContext from "@/context/primaryColorContext";
+import CustomContext from "@/context/CustomContext";
 import { Button, Card, Group, Stack, Text, TextInput } from "@mantine/core";
 import getSecondaryColor from "library/getSecondaryColor";
 import { useContext } from "react";
 
 const Rooms = () => {
-  const primaryColor = useContext(PrimaryColorContext).primaryColor;
+  const context = useContext(CustomContext);
+  const primaryColor = context.primaryColor;
+  const isMobile = context.isMobile;
 
   return (
     <Card
       shadow="md"
       sx={(theme) => ({
-        width: "30rem",
+        width: "27rem",
         backgroundColor:
           theme.colorScheme === "dark"
             ? theme.colors.dark[5]
@@ -21,7 +23,7 @@ const Rooms = () => {
         <Text weight="bold" sx={{ fontSize: "2.1rem", lineHeight: 1.3 }}>
           Rooms
         </Text>
-        <Group align="center">
+        <Group align="center" direction={isMobile ? "column" : "row"}>
           <Stack>
             <TextInput
               label="Join a Public Room"
@@ -46,9 +48,6 @@ const Rooms = () => {
               Confirm
             </Button>
           </Stack>
-          <Text weight="bold" size="xl" sx={{ margin: "auto 0" }}>
-            OR
-          </Text>
           <Stack>
             <TextInput
               label="Directly Message a User"

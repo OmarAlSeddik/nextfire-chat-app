@@ -1,6 +1,6 @@
 // -- mantine -- //
 // -- firebase -- //
-import PrimaryColorContext from "@/context/primaryColorContext";
+import CustomContext from "@/context/CustomContext";
 import { storage } from "@/firebase";
 import {
   Avatar,
@@ -33,7 +33,8 @@ const ProfileModal = (props: {
   displayName: string;
   photoUrl: string;
 }) => {
-  const primaryColor = useContext(PrimaryColorContext).primaryColor;
+  const context = useContext(CustomContext);
+  const primaryColor = context.primaryColor;
 
   const [openedModal, setOpenedModal] = [
     props.openedModal,

@@ -1,13 +1,13 @@
-import PrimaryColorContext from "@/context/primaryColorContext";
-import useIsMobile from "@/hooks/useIsMobile";
+import CustomContext from "@/context/CustomContext";
 import { Button, Stack, Text } from "@mantine/core";
 import getSecondaryColor from "library/getSecondaryColor";
 import signInWithGoogle from "library/signInWithGoogle";
 import { useContext } from "react";
 
 const Auth = () => {
-  const isMobile = useIsMobile();
-  const primaryColor = useContext(PrimaryColorContext).primaryColor;
+  const context = useContext(CustomContext);
+  const primaryColor = context.primaryColor;
+  const isMobile = context.isMobile;
 
   return (
     <Stack align="center" justify="center" sx={{ minHeight: "100vh" }}>
