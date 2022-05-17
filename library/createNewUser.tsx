@@ -10,7 +10,14 @@ const createNewUser = async (
   const userRef = doc(db, "users", uid);
   const docSnap = await getDoc(userRef);
   if (!docSnap.exists()) {
-    setDoc(userRef, { uid, email, displayName, photoUrl });
+    setDoc(userRef, {
+      uid,
+      email,
+      displayName,
+      photoUrl,
+      primaryColor: "orange",
+      colorScheme: "light",
+    });
   }
 };
 

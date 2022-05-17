@@ -1,4 +1,5 @@
 import { Stack } from "@mantine/core";
+import { color1 } from "library/colorVariables";
 import { useRouter } from "next/router";
 import Body from "./Body";
 import Footer from "./Footer";
@@ -13,10 +14,7 @@ const Main = (props: any) => {
       sx={(theme) => ({
         height: "100vh",
         flexGrow: "1",
-        backgroundColor:
-          theme.colorScheme === "dark"
-            ? theme.colors.dark[4]
-            : theme.colors.gray[3],
+        backgroundColor: color1(theme),
       })}
     >
       {url === "/" ? null : <Header />}

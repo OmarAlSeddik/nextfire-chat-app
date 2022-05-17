@@ -1,11 +1,9 @@
-import CustomContext from "@/context/CustomContext";
+import useLoggedInUser from "@/hooks/useLoggedInUser";
 import { Loader, Stack, Text } from "@mantine/core";
 import getSecondaryColor from "library/getSecondaryColor";
-import { useContext } from "react";
 
 const Loading = () => {
-  const context = useContext(CustomContext);
-  const primaryColor = context.primaryColor;
+  const { primaryColor } = useLoggedInUser();
 
   return (
     <Stack align="center" justify="center" sx={{ height: "100%" }}>

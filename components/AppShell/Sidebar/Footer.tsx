@@ -1,4 +1,5 @@
 import { Group, Text } from "@mantine/core";
+import { color2 } from "library/colorVariables";
 import { Home } from "tabler-icons-react";
 
 const Footer = () => {
@@ -13,10 +14,7 @@ const Footer = () => {
         userSelect: "none",
         cursor: "pointer",
         "&:hover": {
-          backgroundColor:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[5]
-              : theme.colors.gray[4],
+          backgroundColor: color2(theme),
         },
       })}
     >

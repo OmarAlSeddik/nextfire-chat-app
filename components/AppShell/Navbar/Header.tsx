@@ -1,13 +1,11 @@
-import CustomContext from "@/context/CustomContext";
+import useLoggedInUser from "@/hooks/useLoggedInUser";
 import { SegmentedControl, Stack } from "@mantine/core";
-import { useContext } from "react";
 
 const Header = (props: {
   activeTab: string;
   setActiveTab: (value: string) => void;
 }) => {
-  const context = useContext(CustomContext);
-  const primaryColor = context.primaryColor;
+  const { primaryColor } = useLoggedInUser();
 
   return (
     <Stack

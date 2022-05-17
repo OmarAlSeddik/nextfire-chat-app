@@ -1,6 +1,7 @@
 // -- mantine -- //
-import useUser from "@/hooks/useUser";
+import useLoggedInUser from "@/hooks/useLoggedInUser";
 import { Group } from "@mantine/core";
+import { color2 } from "library/colorVariables";
 // -- general hooks -- //
 import { useState } from "react";
 import DisplayAvatar from "./DisplayAvatar";
@@ -9,25 +10,13 @@ import DisplayUser from "./DisplayUser";
 import ProfileModal from "./ProfileModal";
 
 const Footer = () => {
-  const [user, loading] = useUser();
-  const uid = user?.uid.stringValue;
-  const displayName = user?.displayName.stringValue;
-  const photoUrl = user?.photoUrl.stringValue;
+  const { loading, photoUrl, displayName } = useLoggedInUser();
 
   const [openedModal, setOpenedModal] = useState(false);
-  const [optimisticPhoto, setOptimisticPhoto] = useState(null);
 
   return (
     <>
-      <ProfileModal
-        openedModal={openedModal}
-        setOpenedModal={setOpenedModal}
-        uid={uid}
-        displayName={displayName}
-        photoUrl={photoUrl}
-        optimisticPhoto={optimisticPhoto}
-        setOptimisticPhoto={setOptimisticPhoto}
-      />
+      <ProfileModal openedModal={openedModal} setOpenedModal={setOpenedModal} />
       <Group
         spacing="xs"
         sx={(theme) => ({
@@ -37,18 +26,12 @@ const Footer = () => {
           userSelect: "none",
           cursor: "pointer",
           "&:hover": {
-            backgroundColor:
-              theme.colorScheme === "dark"
-                ? theme.colors.dark[5]
-                : theme.colors.gray[4],
+            backgroundColor: color2(theme),
           },
         })}
         onClick={() => setOpenedModal(true)}
       >
-        <DisplayAvatar
-          loading={loading}
-          photoUrl={optimisticPhoto ?? photoUrl}
-        />
+        <DisplayAvatar loading={loading} photoUrl={photoUrl} />
         <DisplayUser loading={loading} displayName={displayName} />
       </Group>
     </>

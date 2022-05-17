@@ -1,7 +1,7 @@
 // -- mantine -- //
 // -- firebase -- //
-import CustomContext from "@/context/CustomContext";
 import { storage } from "@/firebase";
+import useLoggedInUser from "@/hooks/useLoggedInUser";
 import {
   Avatar,
   Button,
@@ -20,35 +20,20 @@ import getSecondaryColor from "library/getSecondaryColor";
 // -- library -- //
 import signOut from "library/signOut";
 // -- general hooks -- //
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 // -- icons -- //
 import { Check, X } from "tabler-icons-react";
 
 const ProfileModal = (props: {
   openedModal: boolean;
   setOpenedModal: (value: boolean) => void;
-  optimisticPhoto: string | null;
-  setOptimisticPhoto: (value: any) => void;
-  uid: string;
-  displayName: string;
-  photoUrl: string;
 }) => {
-  const context = useContext(CustomContext);
-  const primaryColor = context.primaryColor;
-
   const [openedModal, setOpenedModal] = [
     props.openedModal,
     props.setOpenedModal,
   ];
 
-  const uid = props.uid;
-  const displayName = props.displayName;
-  const photoUrl = props.photoUrl;
-
-  const [optimisticPhoto, setOptimisticPhoto] = [
-    props.optimisticPhoto,
-    props.setOptimisticPhoto,
-  ];
+  const { uid, displayName, photoUrl, primaryColor } = useLoggedInUser();
 
   const [copiedToClipboard, setCopiedToClipboard] = useState(false);
   const [editingDisplayName, setEditingDisplayName] = useState(false);
@@ -60,13 +45,12 @@ const ProfileModal = (props: {
     uploadBytes(imageRef, image).then(() =>
       getDownloadURL(imageRef).then((url) => {
         changeUserPicture(uid, url);
-        setOptimisticPhoto(url);
       })
     );
   };
 
   const dropzoneChildren = () => {
-    return <Avatar size="xl" radius="md" src={optimisticPhoto ?? photoUrl} />;
+    return <Avatar size="xl" radius="md" src={photoUrl} />;
   };
 
   return (
@@ -147,8 +131,8 @@ const ProfileModal = (props: {
             sx={{ width: "8rem" }}
             variant="gradient"
             gradient={{
-              from: copiedToClipboard ? "green" : primaryColor,
-              to: copiedToClipboard ? "lime" : getSecondaryColor(primaryColor),
+              from: copiedToClipboard ? "lime" : primaryColor,
+              to: copiedToClipboard ? "green" : getSecondaryColor(primaryColor),
             }}
             onClick={() => {
               navigator.clipboard.writeText(uid);
@@ -162,7 +146,11 @@ const ProfileModal = (props: {
         <Stack align="center">
           <Button
             compact
-            color="red"
+            variant="gradient"
+            gradient={{
+              from: "red",
+              to: "#ff0000",
+            }}
             sx={{ width: "6rem" }}
             onClick={() => signOut()}
           >

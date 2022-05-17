@@ -1,77 +1,93 @@
-import CustomContext from "@/context/CustomContext";
+import useIsMobile from "@/hooks/useIsMobile";
+import useLoggedInUser from "@/hooks/useLoggedInUser";
 import { Button, Card, Group, Stack, Text, TextInput } from "@mantine/core";
 import getSecondaryColor from "library/getSecondaryColor";
-import { useContext } from "react";
+import { color1, color2 } from "library/colorVariables";
 
 const Rooms = () => {
-  const context = useContext(CustomContext);
-  const primaryColor = context.primaryColor;
-  const isMobile = context.isMobile;
+  const { primaryColor } = useLoggedInUser();
+  const isMobile = useIsMobile();
 
   return (
     <Card
       shadow="md"
       sx={(theme) => ({
+        "@media (max-width: 700px)": {
+          width: "20rem",
+        },
         width: "27rem",
-        backgroundColor:
-          theme.colorScheme === "dark"
-            ? theme.colors.dark[5]
-            : theme.colors.gray[4],
+        backgroundColor: color2(theme),
       })}
     >
-      <Stack align="center">
-        <Text weight="bold" sx={{ fontSize: "2.1rem", lineHeight: 1.3 }}>
+      <Stack align={isMobile ? "stretch" : "center"}>
+        <Text
+          weight="bold"
+          sx={{ fontSize: "2.1rem", lineHeight: 1.3 }}
+          align="center"
+        >
           Rooms
         </Text>
         <Group align="center" direction={isMobile ? "column" : "row"}>
-          <Stack>
+          <Group
+            direction={isMobile ? "row" : "column"}
+            align={isMobile ? "end" : "stretch"}
+            sx={{
+              "@media (max-width: 700px)": {
+                width: "100%",
+              },
+            }}
+          >
             <TextInput
               label="Join a Public Room"
               placeholder="Enter Room ID"
               sx={(theme) => ({
+                flexGrow: "1",
                 input: {
-                  backgroundColor:
-                    theme.colorScheme === "dark"
-                      ? theme.colors.dark[4]
-                      : theme.colors.gray[3],
+                  backgroundColor: color1(theme),
                 },
               })}
             />
             <Button
-              compact
+              compact={!isMobile}
               variant="gradient"
               gradient={{
                 from: primaryColor,
                 to: getSecondaryColor(primaryColor),
               }}
             >
-              Confirm
+              {isMobile ? "X" : "Confirm"}
             </Button>
-          </Stack>
-          <Stack>
+          </Group>
+          <Group
+            direction={isMobile ? "row" : "column"}
+            align={isMobile ? "end" : "stretch"}
+            sx={{
+              "@media (max-width: 700px)": {
+                width: "100%",
+              },
+            }}
+          >
             <TextInput
               label="Directly Message a User"
               placeholder="Enter User ID"
               sx={(theme) => ({
+                flexGrow: "1",
                 input: {
-                  backgroundColor:
-                    theme.colorScheme === "dark"
-                      ? theme.colors.dark[4]
-                      : theme.colors.gray[3],
+                  backgroundColor: color1(theme),
                 },
               })}
             />
             <Button
-              compact
+              compact={!isMobile}
               variant="gradient"
               gradient={{
                 from: primaryColor,
                 to: getSecondaryColor(primaryColor),
               }}
             >
-              Confirm
+              {isMobile ? "X" : "Confirm"}
             </Button>
-          </Stack>
+          </Group>
         </Group>
         <Button
           variant="gradient"

@@ -1,14 +1,12 @@
-import CustomContext from "@/context/CustomContext";
+import useLoggedInUser from "@/hooks/useLoggedInUser";
 import { ScrollArea, Stack, Text } from "@mantine/core";
 import authRedirectResult from "library/authRedirectResult";
 import getSecondaryColor from "library/getSecondaryColor";
-import { useContext } from "react";
 import Rooms from "./Rooms";
 import Theme from "./Theme";
 
 const Home = () => {
-  const context = useContext(CustomContext);
-  const primaryColor = context.primaryColor;
+  const { primaryColor } = useLoggedInUser();
 
   authRedirectResult();
 

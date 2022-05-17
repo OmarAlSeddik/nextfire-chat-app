@@ -1,20 +1,19 @@
 import Home from "@/components/Home";
 import Loading from "@/components/Loading";
-import { auth } from "@/firebase";
+import useLoggedInUser from "@/hooks/useLoggedInUser";
 import { Box } from "@mantine/core";
 import type { NextPage } from "next";
 import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import { useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 const HomePage: NextPage = () => {
   const router = useRouter();
-  const [user, loading] = useAuthState(auth);
+  const { uid, loading } = useLoggedInUser();
 
   useEffect(() => {
-    if (!user && !loading) router.replace("/auth");
-  }, [loading, router, user]);
+    if (!uid && !loading) router.replace("/auth");
+  }, [loading, router, uid]);
 
   if (loading) return <Loading />;
   return (

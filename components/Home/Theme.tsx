@@ -1,4 +1,4 @@
-import CustomContext from "@/context/CustomContext";
+import useLoggedInUser from "@/hooks/useLoggedInUser";
 import {
   Card,
   ColorSwatch,
@@ -6,10 +6,11 @@ import {
   SegmentedControl,
   Slider,
   Text,
-  useMantineColorScheme,
   useMantineTheme,
 } from "@mantine/core";
-import { useContext } from "react";
+import changeUserPrimaryColor from "library/changeUserPrimaryColor";
+import toggleUserColorScheme from "library/toggleUserColorScheme";
+import { color2 } from "library/colorVariables";
 
 const Theme = () => {
   const MARKS = [
@@ -21,22 +22,18 @@ const Theme = () => {
   ];
 
   const theme = useMantineTheme();
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
-  const context = useContext(CustomContext);
-  const [primaryColor, setPrimaryColor] = [
-    context.primaryColor,
-    context.setPrimaryColor,
-  ];
+  const { uid, primaryColor, colorScheme } = useLoggedInUser();
+  console.log(primaryColor);
 
   return (
     <Card
       sx={(theme) => ({
+        "@media (max-width: 700px)": {
+          width: "20rem",
+        },
         width: "27rem",
-        backgroundColor:
-          theme.colorScheme === "dark"
-            ? theme.colors.dark[5]
-            : theme.colors.gray[4],
+        backgroundColor: color2(theme),
       })}
     >
       <Text
@@ -71,7 +68,7 @@ const Theme = () => {
           { label: "Light Theme", value: "light" },
           { label: "Dark Theme", value: "dark" },
         ]}
-        onChange={() => toggleColorScheme()}
+        onChange={() => toggleUserColorScheme(uid)}
       />
       <Text align="center" weight={500} sx={{ marginBottom: "0.25rem" }}>
         Adjust the Theme Color
@@ -82,21 +79,21 @@ const Theme = () => {
           size={32}
           color={theme.colors.orange[6]}
           sx={{ cursor: "pointer" }}
-          onClick={() => setPrimaryColor("orange")}
+          onClick={() => changeUserPrimaryColor(uid, "orange")}
         />
         <ColorSwatch
           component="button"
           size={32}
           color={theme.colors.cyan[6]}
           sx={{ cursor: "pointer" }}
-          onClick={() => setPrimaryColor("cyan")}
+          onClick={() => changeUserPrimaryColor(uid, "cyan")}
         />
         <ColorSwatch
           component="button"
           size={32}
           color={theme.colors.pink[6]}
           sx={{ cursor: "pointer" }}
-          onClick={() => setPrimaryColor("pink")}
+          onClick={() => changeUserPrimaryColor(uid, "pink")}
         />
       </Group>
     </Card>

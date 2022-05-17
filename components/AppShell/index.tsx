@@ -1,7 +1,6 @@
-import CustomContext from "@/context/CustomContext";
+import useIsMobile from "@/hooks/useIsMobile";
 import { Group } from "@mantine/core";
 import { useRouter } from "next/dist/client/router";
-import { useContext } from "react";
 import Main from "./Main";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
@@ -9,8 +8,7 @@ import Sidebar from "./Sidebar";
 const AppShell = (props: any) => {
   const router = useRouter();
   const url = router.route;
-  const context = useContext(CustomContext);
-  const isMobile = context.isMobile;
+  const isMobile = useIsMobile();
 
   if (url === "/auth") return <>{props.children}</>;
 

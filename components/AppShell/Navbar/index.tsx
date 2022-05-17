@@ -1,4 +1,5 @@
 import { Stack } from "@mantine/core";
+import { color2 } from "library/colorVariables";
 import { useState } from "react";
 import Body from "./Body";
 import Footer from "./Footer";
@@ -12,10 +13,7 @@ const Navbar = () => {
       sx={(theme) => ({
         height: "100vh",
         width: "15rem",
-        backgroundColor:
-          theme.colorScheme === "dark"
-            ? theme.colors.dark[6]
-            : theme.colors.gray[5],
+        backgroundColor: color2(theme),
       })}
     >
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
