@@ -10,7 +10,7 @@ import {
 } from "@mantine/core";
 import changeUserPrimaryColor from "library/changeUserPrimaryColor";
 import toggleUserColorScheme from "library/toggleUserColorScheme";
-import { color2 } from "library/colorVariables";
+import { color2 } from "library/stylingVariables";
 
 const Theme = () => {
   const MARKS = [
@@ -24,7 +24,6 @@ const Theme = () => {
   const theme = useMantineTheme();
 
   const { uid, primaryColor, colorScheme } = useLoggedInUser();
-  console.log(primaryColor);
 
   return (
     <Card

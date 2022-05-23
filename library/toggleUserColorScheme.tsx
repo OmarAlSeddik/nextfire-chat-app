@@ -11,7 +11,6 @@ const toggleUserColorScheme = async (uid: string) => {
     if (docSnap.data().colorScheme === "dark") {
       setDoc(userRef, { colorScheme: "light" }, { merge: true });
     }
-    console.log(docSnap.data());
   }
 };
 

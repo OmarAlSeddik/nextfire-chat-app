@@ -1,7 +1,7 @@
 // -- mantine -- //
 import useLoggedInUser from "@/hooks/useLoggedInUser";
 import { Group } from "@mantine/core";
-import { color2 } from "library/colorVariables";
+import { color2 } from "library/stylingVariables";
 // -- general hooks -- //
 import { useState } from "react";
 import DisplayAvatar from "./DisplayAvatar";

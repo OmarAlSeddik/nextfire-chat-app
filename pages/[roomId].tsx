@@ -1,4 +1,4 @@
-import Auth from "@/components/Auth";
+import Home from "@/components/Home";
 import Loading from "@/components/Loading";
 import useLoggedInUser from "@/hooks/useLoggedInUser";
 import { Box } from "@mantine/core";
@@ -7,24 +7,24 @@ import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import { useEffect } from "react";
 
-const AuthPage: NextPage = () => {
+const RoomPage: NextPage = () => {
   const router = useRouter();
   const { uid, loading } = useLoggedInUser();
 
   useEffect(() => {
-    if (uid) router.replace("/");
+    if (!uid && !loading) router.replace("/auth");
   }, [loading, router, uid]);
 
   if (loading) return <Loading />;
   return (
-    <Box sx={{ overflow: "hidden" }}>
+    <Box sx={{ overflow: "hidden", height: "100%" }}>
       <Head>
-        <title>Sign In</title>
-        <meta name="description" content="Sign into the NextFire Chat app." />
+        <title>NextFire Chat App</title>
+        <meta name="description" content="A room page." />
       </Head>
-      <Auth />
+      <Home />
     </Box>
   );
 };
 
-export default AuthPage;
+export default RoomPage;

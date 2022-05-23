@@ -1,5 +1,5 @@
 import { Stack } from "@mantine/core";
-import { color1 } from "library/colorVariables";
+import { color1 } from "library/stylingVariables";
 import { useRouter } from "next/router";
 import Body from "./Body";
 import Footer from "./Footer";
@@ -13,7 +13,7 @@ const Main = (props: any) => {
     <Stack
       sx={(theme) => ({
         height: "100vh",
-        flexGrow: "1",
+        flex: "1",
         backgroundColor: color1(theme),
       })}
     >

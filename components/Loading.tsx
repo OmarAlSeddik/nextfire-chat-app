@@ -6,7 +6,7 @@ const Loading = () => {
   const { primaryColor } = useLoggedInUser();
 
   return (
-    <Stack align="center" justify="center" sx={{ height: "100%" }}>
+    <Stack align="center" justify="center" sx={{ height: "100vh" }}>
       <Text
         component="h1"
         variant="gradient"

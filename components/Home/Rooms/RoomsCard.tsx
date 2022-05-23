@@ -1,12 +1,14 @@
 import useIsMobile from "@/hooks/useIsMobile";
 import useLoggedInUser from "@/hooks/useLoggedInUser";
 import { Button, Card, Group, Stack, Text, TextInput } from "@mantine/core";
+import { color1, color2 } from "library/stylingVariables";
 import getSecondaryColor from "library/getSecondaryColor";
-import { color1, color2 } from "library/colorVariables";
 
-const Rooms = () => {
+const RoomsCard = (props: { setOpenedModal: (value: boolean) => void }) => {
   const { primaryColor } = useLoggedInUser();
   const isMobile = useIsMobile();
+
+  const setOpenedModal = props.setOpenedModal;
 
   return (
     <Card
@@ -41,7 +43,7 @@ const Rooms = () => {
               label="Join a Public Room"
               placeholder="Enter Room ID"
               sx={(theme) => ({
-                flexGrow: "1",
+                flex: "1",
                 input: {
                   backgroundColor: color1(theme),
                 },
@@ -71,7 +73,7 @@ const Rooms = () => {
               label="Directly Message a User"
               placeholder="Enter User ID"
               sx={(theme) => ({
-                flexGrow: "1",
+                flex: "1",
                 input: {
                   backgroundColor: color1(theme),
                 },
@@ -91,7 +93,11 @@ const Rooms = () => {
         </Group>
         <Button
           variant="gradient"
-          gradient={{ from: primaryColor, to: getSecondaryColor(primaryColor) }}
+          gradient={{
+            from: primaryColor,
+            to: getSecondaryColor(primaryColor),
+          }}
+          onClick={() => setOpenedModal(true)}
         >
           Create a New Room
         </Button>
@@ -100,4 +106,4 @@ const Rooms = () => {
   );
 };
 
-export default Rooms;
+export default RoomsCard;

@@ -7,9 +7,7 @@ const useLoggedInUser = () => {
   const [authUser, loadingLoggedInUser] = useAuthState(auth);
   const loggedInUserRef = doc(db, "users", authUser?.uid || "placeholder");
 
-  const [userData, loadingData, error, snapshot] =
-    useDocumentData(loggedInUserRef);
-  console.log(userData);
+  const [userData, loadingData] = useDocumentData(loggedInUserRef);
 
   const loading = loadingLoggedInUser || loadingData;
 

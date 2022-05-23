@@ -1,5 +1,5 @@
 import { Group, Text } from "@mantine/core";
-import { color2 } from "library/colorVariables";
+import { color2 } from "library/stylingVariables";
 import { Home } from "tabler-icons-react";
 
 const Footer = () => {
